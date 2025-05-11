@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Completion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-evenly;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 20px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .profile-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .profile-image img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+   <!-- Navigation Bar -->
+   <nav>
+    <a href="/home">Home</a>
+    <a href="#">About</a>
+    <a href="#">Features</a>
+    <a href="#">Contact</a>
+</nav>
+
+    <div class="container">
+        <h1>Complete Your Profile</h1>
+        <form action="/submit-profile" method="POST" enctype="multipart/form-data">
+            <!-- Profile Picture Section -->
+            <div class="form-group profile-image">
+                <img src="{{ url_for('static', filename='images/default.jpg') }}"alt="Profile Image" id="profileImage"  class="image" />
+
+                <input type="file" name="profile_picture" accept="image/*" onchange="previewImage(event)">
+            </div>
+
+            <!-- Name Section -->
+            <div class="form-group">
+                <label for="username">Full Name:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Bio Section -->
+            <div class="form-group">
+                <label for="bio">Bio:</label>
+                <textarea id="bio" name="bio" rows="4" placeholder="Write a short bio about yourself..." required></textarea>
+            </div>
+
+            <!-- Location Section -->
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" placeholder="Enter your location (e.g., City, Country)" required>
+            </div>
+
+            <!-- Social Media Links Section -->
+            <div class="form-group">
+                <label for="website">Website/Portfolio (Optional):</label>
+                <input type="text" id="website" name="website" placeholder="Enter your website URL (optional)">
+            </div>
+
+            <div class="form-group">
+                <label for="facebook">Facebook Profile (Optional):</label>
+                <input type="text" id="facebook" name="facebook" placeholder="Enter your Facebook profile URL (optional)">
+            </div>
+
+            <div class="form-group">
+                <label for="twitter">Twitter Profile (Optional):</label>
+                <input type="text" id="twitter" name="twitter" placeholder="Enter your Twitter profile URL (optional)">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Save Profile</button>
+        </form>
+        
+        <div class="form-footer">
+            <p>By completing your profile, you can share more about yourself with your network!</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to preview the uploaded profile picture
+        function previewImage(event) {
+            const profileImage = document.getElementById('profileImage');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                profileImage.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+
+</body>
+</html>

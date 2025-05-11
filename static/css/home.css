@@ -1,0 +1,268 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+}
+
+/* Navigation Bar Styles */
+nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    text-align: center;
+
+}
+
+nav a {
+    margin: 5px;
+
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-decoration: none;
+    color: teal;
+
+}
+nav div{
+    width: 400px;
+    margin-left: 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+nav a:hover {
+    background-color: #575757;
+}
+nav img{
+
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+   
+}
+nav input{
+    background-color: #f4f4f4;
+    width: 260px;
+    height: 33px;
+    /* padding: 10px; */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: 8px;
+}
+/* Hero Section */
+.hero {
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 50px;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+.p_container {
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 30%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.p_container1 {
+            align-items: center;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            height: 10%;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            align-content: space-around;
+}
+        
+        /* Main Content Section */
+.container0 {
+width: 22%;
+border-radius: 8px;
+margin: 10px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+}
+.container5 {
+width: 60%;
+border-radius: 8px;
+margin: 10px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+}
+.c_container {
+
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+
+}
+.container2 {
+    width: 38%;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+margin: 10px;
+}
+h1{
+    color: darkgray;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+}
+
+.card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.card p {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Post Card */
+.post-card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-card h4 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.post-card p {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.post-actions {
+    margin-top: 15px;
+}
+
+.post-actions button {
+    padding: 10px 15px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.post-actions button:hover {
+    background-color: #45a049;
+}
+.post-actions2  {
+    padding: 10px ;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #f4f4f4;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+footer a:hover {
+    background-color: #575757;
+}
+
+/* Complete Profile Link */
+.profile-link {
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    color: #4CAF50;
+    text-decoration: none;
+    padding-top: 50px ;
+}
+
+.profile-link:hover {
+    text-decoration: underline;
+}
+small {
+font-size: smaller;
+}
+
+.form-popup {
+display: none;
+position: fixed;
+bottom: 0;
+right: 15px;
+border: 3px solid #f1f1f1;
+z-index: 9;
+}
+.hide{
+display:none;
+}
+.show{
+display:block;
+}
+.post_comment{
+    display: none;
+}
+.wrapper {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+}

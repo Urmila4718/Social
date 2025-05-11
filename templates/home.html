@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    <title>Welcome to Our Social Media Platform</title>
+
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div>
+        <img src="static/images/icon.png" >
+        <input id='search' type="text" placeholder="Search..." onclick="maxwidth()">
+        </div>
+        <a href="/home"><i class="bi bi-house-door-fill" ></i> Home </a>
+        <a href="/home"><i class="bi bi-people-fill" ></i> My Network </a>
+        <a href="#"><i class="bi bi-briefcase-fill"></i> Jobs </a>
+        <a href="#"><i class="bi bi-chat-left-text-fill" ></i> Messages </a>
+        <a href="#"><i class="bi bi-bell-fill" ></i> Notifications </a>
+       
+        {% set user_image_path = users[4] if users[4] else '/static/images/default.jpg' %}
+        <img style="border-radius: 20px;" src="{{user_image_path}}" width="50" height="50">
+        <!-- <a href="#" class="logo">{{loggedinuser}}</a> -->
+    </nav>
+
+    <!-- <a  href="{{ url_for('profile',username=loggedinuser) }}" class="profile-link">Complete Your Profile</a> -->
+
+    <!-- Hero Section -->
+    <!-- <div class="hero">
+        <div>
+            <h1 >Welcome to Our Social Media Platform</h1>
+            <p style="color: darkgray;">Connecting people around the world</p>
+        </div>
+    </div> -->
+
+    <div class="wrapper">
+    <div class="container0">
+        <div class="p_container" > 
+            {% set user_image_path = users[4] if users[4] else '/static/images/default.jpg' %}
+            <img style="border-radius: 20px;" src="{{user_image_path}}" width="50" height="50">
+            HI {{loggedinuser}}! <br>
+            <p>Welcome to our social media platform. Here, you can connect with friends, share your thoughts, and explore new interests.</p>
+        </div>
+        <div class="p_container1" > 
+           
+            HI {{loggedinuser}}! <br>
+            HI {{loggedinuser}}! <br>
+           
+        </div>
+        <div class="p_container1" > 
+           
+            HI {{loggedinuser}}! <br>
+            HI {{loggedinuser}}! <br>
+           
+        </div>
+        <div class="p_container" > 
+           
+            HI {{loggedinuser}}! <br>
+            HI {{loggedinuser}}! <br>
+           
+        </div>
+    </div>
+    <!-- Main Content -->
+     <div  class="container5">
+    <div class="c_container">
+        <h2>Random Posts</h2>
+        {% for post in posts %}
+        {% if post %}
+        <div class="post-card">
+            <p>{{ post[1] }}</p>
+            <P> <small>{{post[2]}}</small></P>
+            <P> <small>{{post[7]}}</small></P>
+            <img src='{{ post[3] }}' width="300" height="150" ></img>
+            <p><small>{{post[4]}}</small></p>
+            <div class="post-actions">
+                <button id="like-btn">Like :<span id="likes-number">{{post[5]}}</span></button>
+
+                <button onclick="onButtonClick()"> Comment </button>
+                <button>Share</button>
+           </div>
+           <form action="/comments" class="post_comment" id="form_comment" method="POST">                
+            <input placeholder="Post your comment" type="text" id="comments" name="comment" />
+            <input type="hidden" id="post_id" name="post_id" value="{{ post[0] }}">
+            <button type="submit" class="btn" id="comment-btn">Submit</button>
+          </form>
+
+
+        </div>
+        {% else %}
+        <p>No posts available at the moment.</p>
+
+        {% endif %}
+        {% endfor %}
+
+
+   </div>
+   </div>
+   <div class="container2">
+    <h2>Why Join Us?</h2>
+            <!-- Feature Card 1 -->
+            <div class="card">
+                <h3>Connect with Friends</h3>
+                <p>Find and connect with friends from all over the world. Share updates, photos, and stay connected.</p>
+            </div>
+    
+            <!-- Feature Card 2 -->
+            <div class="card">
+                <h3>Share Your Story</h3>
+                <p>Create posts, upload media, and share your story with your network. It's simple and fun.</p>
+            </div>
+    
+            <!-- Feature Card 3 -->
+            <div class="card">
+                <h3>Stay Informed</h3>
+                <p>Get the latest news and updates from your interests, communities, and groups all in one place.</p>
+            </div>
+            <div class="card">
+                <h3>Connect with your friends</h3><br>
+                {% for user in user_account %}
+                {% if user %}
+                <div style="display: flex;align-items: center;"><p style="width: 200px;">{{ user[5] }}</p> <button style="font-size: 16px;height: 20px;background-color: #4CAF50;border-radius: 5px;border: none;color: white;" type="submit"> Connect</button> </div> 
+                {% endif %}
+                {% endfor %}
+           </div>
+    </div>
+   
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Our Social Media Platform | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    
+    <script>
+        // When the user clicks the like button
+        $("#like-btn").click(function() {
+            // Send AJAX request to increment the like count
+            $.ajax({
+                url: '/like',   // Your Flask route
+                method: 'POST',
+                success: function(response) {
+                    // Update the displayed likes count with the updated value from the response
+                    $("#likes-number").text(response.updated_likes);
+                },
+                error: function(xhr, status, error) {
+                    alert("Error: " + status + " " + error);
+                }
+            });
+        });
+        
+    </script>
+    <script>
+        function onButtonClick(){
+
+        
+            var x = document.getElementById("form_comment");
+            if (x.style.display === "none" || x.style.display === "") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }          
+            
+        }
+
+    </script>
+ 
+</body>
+</html>
