@@ -1,4 +1,6 @@
-﻿alembic==1.14.1
+psycopg2-binary
+mysqlclient==2.2.7
+alembic==1.14.1
 aniso8601==10.0.0
 bcrypt==4.3.0
 blinker==1.9.0
