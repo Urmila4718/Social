@@ -1,5 +1,7 @@
 from email.mime import image
 from flask import Flask, flash, jsonify, redirect,render_template, request, session, url_for
+import pymysql
+pymysql.install_as_MySQLdb()
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 
