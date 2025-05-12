@@ -2,3 +2,4 @@ Flask
 flask-mysqldb
 flask-cors
 bcrypt
+psycopg-binary
