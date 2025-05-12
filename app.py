@@ -1,7 +1,5 @@
 from email.mime import image
-from flask import Flask, flash, jsonify, make_response, redirect,render_template, request, session, url_for
-from sqlalchemy import true
-import bcrypt 
+from flask import Flask, flash, jsonify, redirect,render_template, request, session, url_for
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 
